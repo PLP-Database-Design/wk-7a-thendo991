@@ -1,4 +1,4 @@
--- Step 1: Create a CTE to assign row numbers to each product
+
 WITH RECURSIVE product_split AS (
     SELECT 
         OrderID,
@@ -26,3 +26,18 @@ FROM
     product_split
 ORDER BY 
     OrderID;
+
+/* this Query creates the Orders table (eliminate partial dependency): */
+SELECT DISTINCT 
+    OrderID, 
+    CustomerName
+FROM 
+    OrderDetails;
+
+/*this Query create the OrderItems table: */
+SELECT 
+    OrderID, 
+    Product, 
+    Quantity
+FROM 
+    OrderDetails;
